@@ -10,7 +10,7 @@ To: 31st Jan 2019
 
 ### Download h2 database from here:
 
-<a href="http://www.h2database.com/h2-2018-03-18.zip">h2 database</a>
+<a class="btn btn-primary" href="http://www.h2database.com/h2-2018-03-18.zip">h2 database</a>
 
 
 ### Download libraries (JAR files) for Hibernate and Spring framework from here:
