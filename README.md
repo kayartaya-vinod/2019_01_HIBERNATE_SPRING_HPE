@@ -25,7 +25,7 @@ runscript from 'ABSOULTE_PATH_TO_THE_DBSCRIPT.SQL_FILE'
 FOR EXAMPLE:
 
 ```sql
-runscript from '/Users/vinodkumar/Documents/__temp/dbscript.sql'
+runscript from '/Users/vinodkumar/Desktop/dbscript.sql'
 ```
 
 ### Download libraries (JAR files) for Hibernate and Spring framework from here:
