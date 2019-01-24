@@ -12,6 +12,15 @@ To: 31st Jan 2019
 
 <a href="http://www.h2database.com/h2-2018-03-18.zip">h2 database</a>
 
+### Download the database script from here:
+
+<a href="http://vinod.co/resources/dbscript.zip">DB Script (zip file)</a>
+
+### Command to import tables and data from the script file in h2 database:
+
+```sql
+runscript from 'ABSOULTE_PATH_TO_THE_DBSCRIPT.SQL_FILE'
+```
 
 ### Download libraries (JAR files) for Hibernate and Spring framework from here:
 
