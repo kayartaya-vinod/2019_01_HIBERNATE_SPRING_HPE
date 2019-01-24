@@ -22,6 +22,12 @@ To: 31st Jan 2019
 runscript from 'ABSOULTE_PATH_TO_THE_DBSCRIPT.SQL_FILE'
 ```
 
+FOR EXAMPLE:
+
+```sql
+runscript from '/Users/vinodkumar/Documents/__temp/dbscript.sql'
+```
+
 ### Download libraries (JAR files) for Hibernate and Spring framework from here:
 
 <a href="https://vinod.co/resources/hibernate-spring-jars.zip">Hibernate and Spring JARs</a> (Download this only if you do not want to use Maven)
