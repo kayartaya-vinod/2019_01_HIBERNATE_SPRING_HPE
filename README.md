@@ -161,6 +161,3 @@ runscript from '/Users/vinodkumar/Desktop/dbscript.sql'
     <version>2.9.5</version>
 </dependency>
 ```
-
-
--->
