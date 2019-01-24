@@ -13,6 +13,11 @@ To: 31st Jan 2019
 <a href="http://www.h2database.com/h2-2018-03-18.zip">h2 database</a>
 
 
+### Download libraries (JAR files) for Hibernate and Spring framework from here:
+
+<a href="https://vinod.co/resources/hibernate-spring-jars.zip">Hibernate and Spring JARs</a> (Download this only if you do not want to use Maven)
+
+
 ### Hibernate dependency (Maven)
 
 ```xml
