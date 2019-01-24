@@ -52,6 +52,8 @@ To: 31st Jan 2019
 
 ```
 
+<!--
+
 ### Sample context.xml
 
 ```xml
@@ -70,3 +72,4 @@ To: 31st Jan 2019
 
 </beans>
 ```
+-->
