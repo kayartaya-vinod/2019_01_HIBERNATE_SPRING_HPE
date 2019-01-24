@@ -67,7 +67,15 @@ runscript from '/Users/vinodkumar/Desktop/dbscript.sql'
 
 ```
 
-<!--
+### Spring minimum dependencies
+
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>4.3.14.RELEASE</version>
+</dependency>
+```
 
 ### Sample context.xml
 
@@ -87,4 +95,72 @@ runscript from '/Users/vinodkumar/Desktop/dbscript.sql'
 
 </beans>
 ```
+
+### Spring JDBC dependencies
+
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>4.3.14.RELEASE</version>
+</dependency>
+```
+
+### Spring ORM (for hibernate) dependencies
+
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-orm</artifactId>
+    <version>4.3.14.RELEASE</version>
+</dependency>
+```
+
+### AspectJ (for Spring AOP) dependencies
+
+```xml
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjrt</artifactId>
+    <version>1.8.13</version>
+</dependency>
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.8.13</version>
+</dependency>
+```
+
+### Spring MVC dependencies
+
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>4.3.14.RELEASE</version>
+</dependency>
+```
+
+
+### Jackson dependencies
+
+```xml
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-core</artifactId>
+    <version>2.9.5</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.5</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-annotations</artifactId>
+    <version>2.9.5</version>
+</dependency>
+```
+
+
 -->
