@@ -14,9 +14,32 @@ To: 31st Jan 2019
 
 <a href="http://www.h2database.com/h2-2018-03-18.zip">h2 database</a>
 
+### How to use h2 database?
+
+* Unzip the downloaded file `h2-2018-03-18.zip`
+* Go to *h2-2018-03-18/bin* folder
+* Windows - double click the *h2.bat* file
+* MacOS/Linux - run the *h2.sh* in a terminal
+
+This will start a RDBMS server and also opens a client application in a browser.
+
+<img src="./assets/images/h2-client-1.png" width="90%">
+
+* Select **Generic H2 (Server)** from the *Saved settings* dropdown
+* Driver class - **org.h2.Driver** 
+* URL - jdbc:h2:tcp://localhost/~/2019_01_HIBERNATE_SPRING_HPE
+* Username - sa (you may change if you want)
+* Password - (empty by default, you may change if you want)
+
+Click the **Connect** button.
+
+<img src="./assets/images/h2-client-2.png" width="90%">
+
+
 ### Download the database script from here:
 
 <a href="http://vinod.co/resources/dbscript.zip">DB Script (zip file)</a>
+
 
 ### Command to import tables and data from the script file in h2 database:
 
