@@ -31,5 +31,6 @@
 	<classpathentry kind="lib" path="lib/spring-web-4.3.14.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-webmvc-4.3.14.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis-1.0.b2.jar"/>
+	<classpathentry kind="lib" path="lib/lombok-1.18.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
