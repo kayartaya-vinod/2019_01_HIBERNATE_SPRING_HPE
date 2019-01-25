@@ -69,7 +69,7 @@ runscript from '/Users/vinodkumar/Desktop/dbscript.sql'
 
 ```
 
-### Lombok dependencies
+### Lombok dependencies (for simplifying entity classes by auto-generating costructors, getters, setters etc.)
 
 ```xml
 <dependency>
