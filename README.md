@@ -23,6 +23,16 @@ To: 31st Jan 2019
 
 This will start a RDBMS server and also opens a client application in a browser.
 
+
+If the server doesn't start due to port issues, create/update the *.h2.server.properties* file in the home directory with the following (change the webPort to some other unused port): 
+
+```
+0=Generic H2 (Server)|org.h2.Driver|jdbc\:h2\:tcp\://localhost/~/2019_01_HIBERNATE_SPRING_HPE|sa
+webAllowOthers=false
+webPort=8082
+webSSL=false
+```
+
 <img src="./assets/images/h2-client-1.png" width="90%">
 
 * Select **Generic H2 (Server)** from the *Saved settings* dropdown
