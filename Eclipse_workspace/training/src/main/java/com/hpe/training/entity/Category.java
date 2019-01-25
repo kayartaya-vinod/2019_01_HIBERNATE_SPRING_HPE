@@ -3,15 +3,17 @@ package com.hpe.training.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "categories")
 public class Category {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator="inc")
+	@GenericGenerator(name="inc", strategy="increment")
 	@Column(name = "category_id")
 	private Integer categoryId;
 	@Column(name = "category_name")
