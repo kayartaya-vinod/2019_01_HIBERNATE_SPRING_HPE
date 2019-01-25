@@ -69,6 +69,31 @@ runscript from '/Users/vinodkumar/Desktop/dbscript.sql'
 
 ```
 
+### Lombok dependencies
+
+```xml
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.4</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+### How to use lombok?
+
+* Windows - Double click the `lombok-1.18.4.jar`
+* MacOS/Linux - run the command `java -jar lombok-1.18.4.jar` from a terminal after `cd` into the directory where the JAR file is present
+    * Here is the location of the JAR - `~/.m2/repository/org/projectlombok/lombok/1.18.4/lombok-1.18.4.jar`
+
+The following screen appears:
+
+<img src="./assets/images/lombok-setup-1.png" width="90%">
+
+If your eclipse is not listed, click the *Specify location...* button, and choose the *eclipse.ini* file of your eclipse. Then click the *Install/Update* button. Finally, click the *Quit installer* to exit the setup.
+
+Re-launch *eclipse* to use lombok.
+
 ### Spring minimum dependencies
 
 ```xml
