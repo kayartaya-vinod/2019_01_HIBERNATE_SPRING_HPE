@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import com.hpe.training.entity.Category;
+import com.hpe.training.entity.Product;
 
 public class P01_GetCategoryById {
 
@@ -36,26 +37,32 @@ public class P01_GetCategoryById {
 		// U --> update(), merge(), saveOrUpdate()
 		// D --> delete()
 		
-		Integer id = 1;
-		System.out.println("pass-1");
+		Integer id = 2;
+		// System.out.println("pass-1");
 		Category c = (Category) session.get(Category.class, id);
 		c = (Category) session.get(Category.class, id);
 		
-		session.refresh(c);
-		
-		c = (Category) session.get(Category.class, id);
-		c = (Category) session.get(Category.class, id);
-		System.out.println("pass-2");
+		// session.refresh(c);
+		//
+		// c = (Category) session.get(Category.class, id);
+		// c = (Category) session.get(Category.class, id);
+		// System.out.println("pass-2");
 
-		session.close();
-		factory.close();
-			
-		System.out.println("Got an instanceof " + c.getClass().getName());
+		// System.out.println("Got an instanceof " + c.getClass().getName());
 		
 		
 		System.out.println("Name        = " + c.getCategoryName());
 		System.out.println("Description = " + c.getDescription());
-
+		
+		System.out.println("Products in this category: ");
+		for(Product p: c.getProducts() ) {
+			System.out.println(p.getProductName() + ", $ " + p.getUnitPrice());
+		}
+		
+		session.close();
+		factory.close();
+			
+		
 	}
 }
 

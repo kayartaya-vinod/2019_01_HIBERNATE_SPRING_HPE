@@ -2,6 +2,7 @@ package com.hpe.training.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,7 +32,7 @@ public class Product {
 	// association between a product object and a category object
 	// many products belong to one category
 	// general rule - foreign key field is always mapped using many-to-one
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id")
 	private Category category;
 	// foreign key in this table ("products") is matched with the primary key
