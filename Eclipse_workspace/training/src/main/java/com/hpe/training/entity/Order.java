@@ -2,6 +2,8 @@ package com.hpe.training.entity;
 
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -43,6 +45,13 @@ public class Order {
 	private String shipName;
 
 	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name="address", column=@Column(name="ship_address")),
+		@AttributeOverride(name="city", column=@Column(name="ship_city")),
+		@AttributeOverride(name="region", column=@Column(name="ship_region")),
+		@AttributeOverride(name="postalCode", column=@Column(name="ship_postal_code")),
+		@AttributeOverride(name="country", column=@Column(name="ship_country"))
+	})
 	private ContactDetails shipAddress;
 
 	public Order() {

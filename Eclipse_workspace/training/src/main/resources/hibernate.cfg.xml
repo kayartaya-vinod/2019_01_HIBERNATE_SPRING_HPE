@@ -21,6 +21,7 @@
 		<mapping class="com.hpe.training.entity.Customer" />
 		<mapping class="com.hpe.training.entity.Employee" />
 		<mapping class="com.hpe.training.entity.Shipper" />
+		<mapping class="com.hpe.training.entity.Order" />
 		
 	</session-factory>
 </hibernate-configuration>

@@ -10,7 +10,7 @@ public class ContactDetails {
 	private String address;
 	private String city;
 	private String region;
-	@Column(name="postal_code")
+	@Column(name="postal_code") // can be overridden while EMBEDDING in the entity
 	private String postalCode;
 	private String country;
 
