@@ -16,8 +16,10 @@ public class P06_GetSupplierAndProducts {
 			Session session = factory.openSession();
 			Supplier s1 = (Supplier) session.get(Supplier.class, 1);
 			
-			System.out.println("Supplier name: " + s1.getCompanyName());
-			System.out.println("Contact person: " + s1.getContactPerson());
+			System.out.println("Supplier name  : " + s1.getCompanyName());
+			System.out.println("Contact person : " + s1.getContactPerson());
+			System.out.println("City           : " + s1.getContactDetails().getCity());
+			System.out.println("Country        : " + s1.getContactDetails().getCountry());
 			System.out.println("Products supplied: ");
 			
 			for(Product p: s1.getProducts()) {
