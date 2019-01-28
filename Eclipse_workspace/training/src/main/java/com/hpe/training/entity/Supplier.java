@@ -15,7 +15,7 @@ public class Supplier {
 	private Integer supplierId;
 	@Column(name = "company_name")
 	private String companyName;
-	@Column(name = "contact_person")
+	@Column(name = "contact_name")
 	private String contactPerson;
 	@Column(name = "contact_title")
 	private String contactTitle;

@@ -17,6 +17,7 @@
 		
 		<mapping class="com.hpe.training.entity.Category" />
 		<mapping class="com.hpe.training.entity.Product" />
+		<mapping class="com.hpe.training.entity.Supplier" />
 		
 	</session-factory>
 </hibernate-configuration>

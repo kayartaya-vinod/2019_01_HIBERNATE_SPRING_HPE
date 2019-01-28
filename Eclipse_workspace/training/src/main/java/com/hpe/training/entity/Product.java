@@ -32,11 +32,17 @@ public class Product {
 	// association between a product object and a category object
 	// many products belong to one category
 	// general rule - foreign key field is always mapped using many-to-one
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id")
 	private Category category;
 	// foreign key in this table ("products") is matched with the primary key
 	// of the other table ("categories")
+
+	// a product is supplied by a single supplier
+	// many products may have been supplied by a single supplier
+	@ManyToOne
+	@JoinColumn(name = "supplier_id") // foreign key in this table
+	private Supplier supplier; // dont forget to add setter/getter
 
 	public Product() {
 	}
@@ -111,6 +117,14 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 
 }
