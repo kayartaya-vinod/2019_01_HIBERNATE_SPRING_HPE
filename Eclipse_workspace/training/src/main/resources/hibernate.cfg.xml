@@ -6,12 +6,14 @@
 
 <hibernate-configuration>
 	<session-factory>
+		
 		<property name="hibernate.connection.driver_class">org.h2.Driver</property>
 		<property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/2019_01_HIBERNATE_SPRING_HPE</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password"></property>
-
- 		<!-- <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		
+<!-- 
+ 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/northwind</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">root</property>
@@ -19,6 +21,7 @@
 		<property name="show_sql">false</property>
 		<property name="format_sql">true</property>
 		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
+		<!-- <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property> -->
 		
 		<mapping class="com.hpe.training.entity.Category" />
 		<mapping class="com.hpe.training.entity.Product" />

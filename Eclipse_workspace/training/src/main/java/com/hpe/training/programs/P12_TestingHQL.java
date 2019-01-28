@@ -7,6 +7,7 @@ import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import com.hpe.training.entity.Category;
 import com.hpe.training.entity.Product;
@@ -26,17 +27,89 @@ public class P12_TestingHQL {
 			printProductsByPriceRange(50.0, 500.0); // minPrice=50, maxPrice=500
 			printProductsByCategory("Beverages"); // categoryName = "Beverages"
 			printCategoriesBySupplier("Exotic Liquids"); // Exotic Liquids --> supplier's company name
+			printProductsByPage(4); // 4 --> pageNum (assuming 10 is the page size)
+			printProductNamesAndPrices(); // example for PROJECTION
+			printCategorywiseProductSummary(); // example of GROUP BY
+			incrementProductPriceBy(1.0); // inc price is $1
+			
 			session.close();
 		} finally {
 			factory.close();
 		}
 	}
 
+	static void incrementProductPriceBy(double incPrice) {
+		Transaction tx = session.beginTransaction();
+		String hql = "update Product set unitPrice = unitPrice + :INC_PRICE";
+		Query qry = session.createQuery(hql);
+		qry.setDouble("INC_PRICE", incPrice);
+		try {
+			qry.executeUpdate(); // used for DML UPDATE/DELETE (bulk operations)
+			tx.commit();
+			System.out.printf("Product price icreased by $%.2f for each product\n", incPrice);
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println("OOPS! Something went wrong! -- " + e.getMessage());
+		}
+		
+	}
+
+	static void printCategorywiseProductSummary() {
+		String hql = "select p.category.categoryName, count(p), avg(p.unitPrice), "
+				+ "sum(p.unitPrice * p.unitsInStock) from Product p "
+				+ "group by p.category.categoryName "
+				+ "having count(p) > 10 "
+				+ "order by p.category.categoryName ";
+				
+		Query qry = session.createQuery(hql);
+		List<Object[]> list = qry.list();
+		for(Object[] data: list) {
+			String catName = (String) data[0];
+			Long count = (Long) data[1];
+			Double avgPrice = (Double) data[2];
+			Double stockValue = (Double) data[3];
+			System.out.printf("%s (count=%d, avg=%.2f, stock_val=%.2f)\n",
+					catName, count, avgPrice, stockValue);
+		}
+		System.out.println();
+	}
+
+	static void printProductNamesAndPrices() {
+		String hql = "select productName, unitPrice from Product";
+		Query qry = session.createQuery(hql);
+		qry.setMaxResults(10); // limit the no.of records to fetch
+		
+		List<Object[]> list = qry.list();
+		for(Object[] data: list) {
+			String pname = (String) data[0];
+			Double price = (Double) data[1];
+			System.out.println(pname + " --> $" + price);
+		}
+		System.out.println();
+	}
+
+	static void printProductsByPage(int pageNum) {
+		int pageSize = 10;
+		int offset = (pageNum - 1) * pageSize;
+		Query qry = session.createQuery("from Product");
+		qry.setFirstResult(offset);
+		qry.setMaxResults(pageSize);
+		
+		List<Product> list = qry.list();
+		for (Product p : list) {
+			System.out.printf("%2d %-40s $%10.2f\n",
+					p.getProductId(),
+					p.getProductName(),
+					p.getUnitPrice());
+		}
+		System.out.println();
+	}
+
 	// example for joining a OneToMany or ManyToMany member
 	static void printCategoriesBySupplier(String companyName) {
-		String hql = "select c from Category c join c.products p where p.supplier.companyName = ?";
+		String hql = "select c from Category c join c.products p where p.supplier.companyName = :COMPANY_NAME";
 		Query qry = session.createQuery(hql);
-		qry.setString(0, companyName);
+		qry.setString("COMPANY_NAME", companyName);
 		Set<Category> categories = new HashSet<Category>();
 		categories.addAll(qry.list());
 
@@ -44,6 +117,7 @@ public class P12_TestingHQL {
 		for (Category c : categories) {
 			System.out.println(c.getCategoryName());
 		}
+		System.out.println();
 	}
 
 	// example for joining a ManyToOne or OneToOne member
