@@ -3,6 +3,7 @@ package com.hpe.training.programs;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.hpe.training.entity.Customer;
 import com.hpe.training.entity.Employee;
 import com.hpe.training.utils.HibernateUtil;
 
@@ -27,7 +28,12 @@ public class P07_GetEmployeeData {
 				System.out.println(sub.getFirstName() + " " + sub.getLastName());
 			}
 			
-
+			System.out.println();
+			System.out.println("Customers dealt with: ");
+			for(Customer c: e1.getCustomers()) {
+				System.out.println(c.getCompanyName());
+			}
+			
 			session.close();
 		} finally {
 			factory.close();

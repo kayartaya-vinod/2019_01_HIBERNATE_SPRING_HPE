@@ -56,5 +56,4 @@ public class ContactDetails {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-
 }

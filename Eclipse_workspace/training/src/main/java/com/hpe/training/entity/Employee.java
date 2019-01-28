@@ -2,12 +2,15 @@ package com.hpe.training.entity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -44,6 +47,13 @@ public class Employee {
 	
 	@OneToMany(mappedBy = "manager")
 	private List<Employee> subordinates;
+	
+	// all the customers that this employee has done business with
+	@ManyToMany
+	@JoinTable(name="orders", 
+		joinColumns= {@JoinColumn(name="employee_id")}, // EMPLOYEES.EMPLOYEE_ID => ORDERS.EMPLOYEE_ID
+		inverseJoinColumns= {@JoinColumn(name="customer_id")}) // ORDERS.CUSTOMER_ID => CUSTOMERS.CUSTOMER_ID
+	private Set<Customer> customers; // dont forget to add getter/setter
 
 	public Employee() {
 	}
@@ -158,6 +168,14 @@ public class Employee {
 
 	public void setSubordinates(List<Employee> subordinates) {
 		this.subordinates = subordinates;
+	}
+
+	public Set<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(Set<Customer> customers) {
+		this.customers = customers;
 	}
 
 }
