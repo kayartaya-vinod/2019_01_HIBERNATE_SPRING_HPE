@@ -1,9 +1,13 @@
 package com.hpe.training.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +32,16 @@ public class Supplier {
 	private String fax;
 	@Column(name = "home_page")
 	private String homePage;
+	
+	// one supplier might have supplied 0 or more products
+	// can be represented using an array, or a List<?> or a Set<?>
+	@OneToMany // by default fetchType is LAZY for collections
+	@JoinColumn(name="supplier_id") // foreign key in the PRODUCTS table
+	private List<Product> products; // dont forget to add getter/setter
+	
+	// Instead of @JoinColumn(name="supplier_id"), we can also specify
+	// @OneToMany(mappedBy="supplier"), where "supplier" is the name of
+	// the member in Product.java containing the JOIN information
 
 	public Supplier() {
 	}
@@ -94,6 +108,14 @@ public class Supplier {
 
 	public void setHomePage(String homePage) {
 		this.homePage = homePage;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 }
