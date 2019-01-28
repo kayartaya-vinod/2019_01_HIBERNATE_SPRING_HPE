@@ -20,6 +20,7 @@
 		<mapping class="com.hpe.training.entity.Supplier" />
 		<mapping class="com.hpe.training.entity.Customer" />
 		<mapping class="com.hpe.training.entity.Employee" />
+		<mapping class="com.hpe.training.entity.Shipper" />
 		
 	</session-factory>
 </hibernate-configuration>

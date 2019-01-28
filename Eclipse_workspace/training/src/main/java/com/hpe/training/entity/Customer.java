@@ -1,9 +1,14 @@
 package com.hpe.training.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +28,13 @@ public class Customer {
 	private ContactDetails contactDetails; // association
 	private String phone;
 	private String fax;
+
+	// employees who have processed my orders
+	@ManyToMany (mappedBy = "customers") // get the join-table-column info from Employee.customers field
+//	@JoinTable(name="orders",
+//		joinColumns= {@JoinColumn(name="customer_id")},
+//		inverseJoinColumns= {@JoinColumn(name="employee_id")})
+	private Set<Employee> employees;
 
 	public Customer() {
 	}
@@ -81,6 +93,14 @@ public class Customer {
 
 	public void setFax(String fax) {
 		this.fax = fax;
+	}
+
+	public Set<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
 
 }
