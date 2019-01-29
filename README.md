@@ -10,6 +10,11 @@ From: 25th Jan 2019
 
 To: 31st Jan 2019
 
+<a href="https://www.udemy.com/mongodb-fundamentals/?couponCode=FIRST500" target="_blank">
+<img src="./assets/images/promo-1.png">
+</a>
+
+
 ### Download h2 database from here:
 
 <a href="http://www.h2database.com/h2-2018-03-18.zip">h2 database</a>
