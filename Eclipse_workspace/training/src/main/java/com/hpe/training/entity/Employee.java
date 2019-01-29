@@ -46,7 +46,7 @@ public class Employee {
 	@ManyToOne
 	@JoinColumn(name = "reports_to")
 	private Employee manager;
-	
+
 	@OneToMany(mappedBy = "manager")
 	private List<Employee> subordinates;
 
@@ -192,8 +192,7 @@ public class Employee {
 	public void setLaptop(Laptop laptop) {
 		this.laptop = laptop;
 	}
-	
-	
+
 	// helper function to do bidirectional assoication with Laptop
 	public void assignLaptop(Laptop laptop) {
 		this.laptop = laptop;
@@ -201,13 +200,3 @@ public class Employee {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
