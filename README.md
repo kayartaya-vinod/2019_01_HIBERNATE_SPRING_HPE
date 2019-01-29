@@ -171,6 +171,16 @@ Re-launch *eclipse* to use lombok.
 </beans>
 ```
 
+### Apache DBCP dependencies:
+
+```xml
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-dbcp2</artifactId>
+    <version>2.5.0</version>
+</dependency>
+```
+
 ### Spring JDBC dependencies
 
 ```xml
