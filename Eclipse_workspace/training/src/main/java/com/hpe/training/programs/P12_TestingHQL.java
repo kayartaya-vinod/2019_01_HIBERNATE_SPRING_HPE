@@ -49,7 +49,7 @@ public class P12_TestingHQL {
 				"having sum(unit_price*quantity*(1-discount))>=:ORDER_TOTAL)";
 		SQLQuery qry = session.createSQLQuery(sql);
 		qry.setDouble("ORDER_TOTAL", orderTotal);
-		qry.addEntity(Order.class);
+		qry.addEntity(Order.class); // with out this, qry.list() will return List<Object[]>
 		List<Order> list = qry.list();
 		for(Order ord: list) {
 			System.out.println("Order id: " + ord.getOrderId());
