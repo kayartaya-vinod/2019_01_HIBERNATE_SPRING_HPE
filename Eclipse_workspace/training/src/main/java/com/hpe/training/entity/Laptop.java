@@ -1,8 +1,11 @@
 package com.hpe.training.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,12 @@ public class Laptop {
 	private String make;
 	private String model;
 
+	// @ManyToOne is used instead of @OneToOne here to make sure that 
+	// "emp_id" is a foreign key colum in the current table "laptops"
+	// If you use @OneToOne, then the join column is referred from the other
+	// table, "employees". "unique=true" ensures that it is one-to-one.
+	@ManyToOne(cascade= {CascadeType.MERGE, CascadeType.PERSIST})
+	@JoinColumn(name = "emp_id", unique = true, nullable=true)
 	private Employee ownedBy;
 
 	public Laptop() {
@@ -57,5 +66,21 @@ public class Laptop {
 	public void setOwnedBy(Employee ownedBy) {
 		this.ownedBy = ownedBy;
 	}
+	
+	// helper function to do bidirectional association with Employee
+	public void allocateTo(Employee emp) {
+		this.setOwnedBy(emp);
+		emp.setLaptop(this);
+	}
 
 }
+
+
+
+
+
+
+
+
+
+

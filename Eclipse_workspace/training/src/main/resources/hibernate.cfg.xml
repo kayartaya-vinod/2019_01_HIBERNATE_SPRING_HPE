@@ -21,6 +21,8 @@
 		<property name="show_sql">false</property>
 		<property name="format_sql">true</property>
 		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
 		<!-- <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property> -->
 		
 		<mapping class="com.hpe.training.entity.Category" />
@@ -31,6 +33,7 @@
 		<mapping class="com.hpe.training.entity.Shipper" />
 		<mapping class="com.hpe.training.entity.Order" />
 		<mapping class="com.hpe.training.entity.LineItem" />
+		<mapping class="com.hpe.training.entity.Laptop" />
 		
 	</session-factory>
 </hibernate-configuration>

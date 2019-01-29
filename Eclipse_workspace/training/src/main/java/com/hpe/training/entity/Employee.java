@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -47,13 +49,18 @@ public class Employee {
 	
 	@OneToMany(mappedBy = "manager")
 	private List<Employee> subordinates;
-	
+
 	// all the customers that this employee has done business with
 	@ManyToMany
-	@JoinTable(name="orders", 
-		joinColumns= {@JoinColumn(name="employee_id")}, // EMPLOYEES.EMPLOYEE_ID => ORDERS.EMPLOYEE_ID
-		inverseJoinColumns= {@JoinColumn(name="customer_id")}) // ORDERS.CUSTOMER_ID => CUSTOMERS.CUSTOMER_ID
+	@JoinTable(name = "orders", joinColumns = { @JoinColumn(name = "employee_id") }, // EMPLOYEES.EMPLOYEE_ID =>
+																						// ORDERS.EMPLOYEE_ID
+			inverseJoinColumns = { @JoinColumn(name = "customer_id") }) // ORDERS.CUSTOMER_ID => CUSTOMERS.CUSTOMER_ID
 	private Set<Customer> customers; // dont forget to add getter/setter
+
+	// this employee may have zero or one laptop
+	@OneToOne(mappedBy = "ownedBy", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+	// @JoinColumn(name="emp_id")
+	private Laptop laptop; // don't forget to add getter/setter
 
 	public Employee() {
 	}
@@ -178,4 +185,29 @@ public class Employee {
 		this.customers = customers;
 	}
 
+	public Laptop getLaptop() {
+		return laptop;
+	}
+
+	public void setLaptop(Laptop laptop) {
+		this.laptop = laptop;
+	}
+	
+	
+	// helper function to do bidirectional assoication with Laptop
+	public void assignLaptop(Laptop laptop) {
+		this.laptop = laptop;
+		laptop.setOwnedBy(this);
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
