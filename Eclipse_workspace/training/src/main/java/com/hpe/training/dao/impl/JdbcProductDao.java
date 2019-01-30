@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hpe.training.dao.DaoException;
 import com.hpe.training.dao.ProductDao;
+import com.hpe.training.entity.Product;
 
 // @Component("jdbc")
 // @Service("jdbc")
@@ -94,6 +96,46 @@ public class JdbcProductDao implements ProductDao {
 			throw new DaoException(ex);
 		}
 
+	}
+
+	@Override
+	public void add(Product product) throws DaoException {
+		throw new DaoException("Method not implemented!");
+	}
+
+	@Override
+	public Product get(Integer productId) throws DaoException {
+		throw new DaoException("Method not implemented!");
+	}
+
+	@Override
+	public void update(Product product) throws DaoException {
+		throw new DaoException("Method not implemented!");
+	}
+
+	@Override
+	public void delete(Integer productId) throws DaoException {
+		throw new DaoException("Method not implemented!");
+	}
+
+	@Override
+	public List<Product> getAll() throws DaoException {
+		throw new DaoException("Method not implemented!");
+	}
+
+	@Override
+	public List<Product> getProductsByPrice(Double min, Double max) throws DaoException {
+		throw new DaoException("Method not implemented!");
+	}
+
+	@Override
+	public List<Product> getProductsNotInStock() throws DaoException {
+		throw new DaoException("Method not implemented!");
+	}
+
+	@Override
+	public List<Product> getDiscontinuedProducts() throws DaoException {
+		throw new DaoException("Method not implemented!");
 	}
 
 }
