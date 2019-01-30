@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.hpe.training.cfg.AppConfig6;
+import com.hpe.training.cfg.AppConfig7;
 import com.hpe.training.dao.DaoException;
 import com.hpe.training.dao.ProductDao;
 import com.hpe.training.entity.Product;
@@ -14,18 +14,22 @@ public class P18_TestProductDaoOperations {
 	public static void main(String[] args) throws DaoException {
 		
 		AnnotationConfigApplicationContext ctx;
-		ctx = new AnnotationConfigApplicationContext(AppConfig6.class);
+		ctx = new AnnotationConfigApplicationContext(AppConfig7.class);
 		
-		ProductDao dao = ctx.getBean("jdbcTemplateProductDao", ProductDao.class);
+		ProductDao dao = ctx.getBean("htDao", ProductDao.class);
 		System.out.println("dao is an instanceof " + dao.getClass());
 		
 		int pc = dao.count();
 		System.out.println("There are " + pc + " products.");
 		
 		Product p = dao.get(1);
+		System.out.println("Product name = " + p.getProductName());
+		System.out.println("Category     = " + p.getCategory().getCategoryName());
+		System.out.println("Supplied by  = " + p.getSupplier().getCompanyName());
+		
 		System.out.println("Before update price = " + p.getUnitPrice());
 		p.setUnitPrice(p.getUnitPrice() + 1);
-		dao.update(p);
+		// dao.update(p);
 		p = dao.get(1);
 		System.out.println("After update price = " + p.getUnitPrice());
 		
