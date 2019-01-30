@@ -34,6 +34,10 @@ public class JdbcProductDao implements ProductDao {
 	// a setter is a.k.a a writable property (mutator)
 	// setXyz --> property "xyz"
 
+	public JdbcProductDao(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
 	// this function is a writable property called "driverClassName"
 	public void setDriverClassName(String driverClassName) {
 		this.driverClassName = driverClassName;

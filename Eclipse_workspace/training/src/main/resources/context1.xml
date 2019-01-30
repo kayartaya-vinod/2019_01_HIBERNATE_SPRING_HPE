@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean name="dbcp,dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	<bean class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="org.h2.Driver" />
 		<property name="url" value="jdbc:h2:tcp://localhost/~/2019_01_HIBERNATE_SPRING_HPE" />
 		<property name="username" value="sa" />
@@ -19,20 +19,9 @@
 		<property name="maxWaitMillis" value="5000" />
 	</bean>
 
-	<bean name="mysql_dbcp" class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost/northwind" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
-		<property name="maxTotal" value="50" />
-		<property name="maxIdle" value="10" />
-		<property name="minIdle" value="2" />
-		<property name="maxWaitMillis" value="5000" />
-	</bean>
-
 	<bean name="jdbc" class="com.hpe.training.dao.impl.JdbcProductDao"
-		autowire="byName" scope="singleton" lazy-init="true">
+		autowire="byType">
+		
 	</bean>
 
 </beans>
