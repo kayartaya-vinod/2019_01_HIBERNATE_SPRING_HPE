@@ -8,16 +8,26 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.hpe.training.dao.DaoException;
 import com.hpe.training.dao.ProductDao;
 
+// @Component("jdbc")
+// @Service("jdbc")
+@Repository("jdbc")
+// @Configuration("jdbc")
+// @Controller("jdbc")
+// @RestController("jdbc")
 public class JdbcProductDao implements ProductDao {
 
 	private String driverClassName;
 	private String url;
 	private String username;
 	private String password;
-	
+
+	@Autowired(required = false)
 	private DataSource dataSource;
 
 	public JdbcProductDao() {
@@ -54,12 +64,11 @@ public class JdbcProductDao implements ProductDao {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	// writable property called "dataSource"
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-	
 
 	private Connection openConnection() throws ClassNotFoundException, SQLException {
 		// if the connection pool exists, use a connection from the same
@@ -74,29 +83,17 @@ public class JdbcProductDao implements ProductDao {
 
 	@Override
 	public int count() throws DaoException {
-		
+
 		String sql = "select count(*) from products";
-		try(
-			Connection conn = openConnection();
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
-		) {
+		try (Connection conn = openConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				ResultSet rs = stmt.executeQuery();) {
 			rs.next();
 			return rs.getInt(1);
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			throw new DaoException(ex);
 		}
-		
+
 	}
 
 }
-
-
-
-
-
-
-
-
-
