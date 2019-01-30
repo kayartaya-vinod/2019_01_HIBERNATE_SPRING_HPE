@@ -33,57 +33,75 @@ public class JdbcTemplateProductDao implements ProductDao {
 	};
 
 	@Override
-	public void add(Product product) throws DaoException {
-		// TODO Auto-generated method stub
-
+	public void add(Product p) throws DaoException {
+		String sql = "insert into products(product_name, quantity_per_unit, unit_price, "
+				+ "units_in_stock, units_on_order, reorder_level, discontinued, product_id) "
+				+ "values(?,?,?,?,?,?,?,?)";
+		template.update(sql, 
+				p.getProductName(), 
+				p.getQuantityPerUnit(), 
+				p.getUnitPrice(),
+				p.getUnitsInStock(), 
+				p.getUnitsOnOrder(), 
+				p.getReorderLevel(), 
+				p.getDiscontinued(),
+				p.getProductId());
 	}
 
+	// All of the implemented methods must catch any possible exception,
+	// and convert the same into a DaoException, and re-throw it.
+	// We will use AOP to achieve the same.
 	@Override
 	public Product get(Integer productId) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from products where product_id = ?";
+		return template.queryForObject(sql, prm, productId);
 	}
 
 	@Override
-	public void update(Product product) throws DaoException {
-		// TODO Auto-generated method stub
-
+	public void update(Product p) throws DaoException {
+		String sql = "update products set product_name=?, quantity_per_unit=?, unit_price=?, "
+				+ "units_in_stock=?, units_on_order=?, reorder_level=?, discontinued=? "
+				+ "where product_id=?";
+		template.update(sql, 
+				p.getProductName(), 
+				p.getQuantityPerUnit(), 
+				p.getUnitPrice(),
+				p.getUnitsInStock(), 
+				p.getUnitsOnOrder(), 
+				p.getReorderLevel(), 
+				p.getDiscontinued(),
+				p.getProductId());
 	}
 
 	@Override
 	public void delete(Integer productId) throws DaoException {
-		// TODO Auto-generated method stub
-
+		template.update("delete from products where product_id=?", productId);
 	}
 
 	@Override
 	public int count() throws DaoException {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.queryForObject("select count(*) from products", Integer.class);
 	}
 
 	@Override
 	public List<Product> getAll() throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		return template.query("select * from products", prm);
 	}
 
 	@Override
 	public List<Product> getProductsByPrice(Double min, Double max) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		return template.query("select * from products where unit_price between ? and ?", 
+				prm, min, max);
 	}
 
 	@Override
 	public List<Product> getProductsNotInStock() throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		return template.query("select * from products where units_in_stock = 0", prm);
 	}
 
 	@Override
 	public List<Product> getDiscontinuedProducts() throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		return template.query("select * from products where discontinued = 1", prm);
 	}
 
 }
