@@ -29,7 +29,7 @@ public class P18_TestProductDaoOperations {
 		
 		System.out.println("Before update price = " + p.getUnitPrice());
 		p.setUnitPrice(p.getUnitPrice() + 1);
-		// dao.update(p);
+		dao.update(p);
 		p = dao.get(1);
 		System.out.println("After update price = " + p.getUnitPrice());
 		
