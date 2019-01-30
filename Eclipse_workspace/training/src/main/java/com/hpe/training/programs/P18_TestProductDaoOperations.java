@@ -22,6 +22,13 @@ public class P18_TestProductDaoOperations {
 		int pc = dao.count();
 		System.out.println("There are " + pc + " products.");
 		
+		Product p = dao.get(1);
+		System.out.println("Before update price = " + p.getUnitPrice());
+		p.setUnitPrice(p.getUnitPrice() + 1);
+		dao.update(p);
+		p = dao.get(1);
+		System.out.println("After update price = " + p.getUnitPrice());
+		
 		List<Product> list = dao.getAll();
 		System.out.println("There are " + list.size() + " products.");
 		
