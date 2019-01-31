@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -16,7 +17,8 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import com.hpe.training.entity.Category;
 import com.hpe.training.entity.Product;
 
-@ComponentScan(basePackages = { "com.hpe.training.dao" })
+@EnableAspectJAutoProxy
+@ComponentScan(basePackages = { "com.hpe.training.dao", "com.hpe.training.aop" })
 @Configuration
 public class AppConfig7 {
 
