@@ -21,20 +21,20 @@ import com.hpe.training.entity.Product;
 
 @EnableTransactionManagement // creates a proxy for managing transaction
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = { "com.hpe.training.dao", "com.hpe.training.aop" })
+@ComponentScan(basePackages = { "com.hpe.training.web", "com.hpe.training.dao", "com.hpe.training.aop" })
 @Configuration
-public class AppConfig7 {
-	
+public class AppConfig {
+
 	// Transactions via HibernateTemplate are managed by HibernateTransactionManager
 	// Transactions via JdbcTemplate are managed by DataSourceTransactionManager
-	
+
 	// HibernateTransactionManager depends on SessionFactory
 	@Bean
 	public HibernateTransactionManager txManager(SessionFactory sf) { // dependency injection
 		return new HibernateTransactionManager(sf); // manual wiring
 	}
 
-	@Bean(name ="dataSource")
+	@Bean(name = "dataSource")
 	public BasicDataSource h2Dbcp() {
 		BasicDataSource bds = new BasicDataSource();
 		bds.setDriverClassName("org.h2.Driver");
@@ -43,22 +43,22 @@ public class AppConfig7 {
 		bds.setPassword("");
 		return bds;
 	}
-	
+
 	@Bean
 	public HibernateTemplate ht(SessionFactory sf) {
 		return new HibernateTemplate(sf);
 	}
 
-	// This bean is NOT an instanceof SessionFactory, but has a method called 
+	// This bean is NOT an instanceof SessionFactory, but has a method called
 	// getObject() that returns an instanceof SessionFactory.
 	// Whenever spring has to inject an object of SessionFactory, it will call
 	// this bean's getObject() function.
-	@Bean 
+	@Bean
 	public LocalSessionFactoryBean lsfb(DataSource ds) {
 		LocalSessionFactoryBean sf = new LocalSessionFactoryBean();
 		sf.setDataSource(ds);
 		sf.setConfigLocation(new ClassPathResource("spring-hibernate.cfg.xml"));
-		
+
 		Properties props = new Properties();
 		props.setProperty("hibernate.show_sql", "false");
 		props.setProperty("hibernate.format_sql", "true");

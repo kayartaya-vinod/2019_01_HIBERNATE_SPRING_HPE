@@ -2,3 +2,6 @@
 /h2
 /Eclipse_workspace/.recommenders
 /Eclipse_workspace/RemoteSystemsTempFiles
+/Eclipse_workspace/.metadata
+/Eclipse_workspace/Servers
+/Eclipse_workspace/Spring MVC/WebContent/WEB-INF/lib
