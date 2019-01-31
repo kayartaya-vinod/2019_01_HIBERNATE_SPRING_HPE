@@ -5,6 +5,10 @@
 	id="WebApp_ID" version="3.1">
 	
 	
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/views/index.jsp</welcome-file>
+	</welcome-file-list>
+	
 	<!-- DispatcherServlet looks for a spring container in the JVM and if not found,
 	creates a new one of type WebApplicationContext and populates the spring container
 	with beans found in the context.xml (specified as contextConfigLocation property)-->

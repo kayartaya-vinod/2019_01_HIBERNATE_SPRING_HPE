@@ -15,6 +15,8 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.hpe.training.entity.Category;
 import com.hpe.training.entity.Product;
@@ -24,6 +26,15 @@ import com.hpe.training.entity.Product;
 @ComponentScan(basePackages = { "com.hpe.training.web", "com.hpe.training.dao", "com.hpe.training.aop" })
 @Configuration
 public class AppConfig {
+	
+	// ViewResolver (optional)
+	@Bean
+	public ViewResolver viewResolver() {
+		InternalResourceViewResolver vr = new InternalResourceViewResolver();
+		vr.setPrefix("/WEB-INF/views/");
+		vr.setSuffix(".jsp");
+		return vr;
+	}
 
 	// Transactions via HibernateTemplate are managed by HibernateTransactionManager
 	// Transactions via JdbcTemplate are managed by DataSourceTransactionManager

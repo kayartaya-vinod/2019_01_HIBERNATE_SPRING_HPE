@@ -7,7 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement // similar to java.io.Serializable
+@XmlAccessorType(XmlAccessType.FIELD) // use fields for serialization not getters
 @Entity
 @Table(name = "products")
 public class Product {

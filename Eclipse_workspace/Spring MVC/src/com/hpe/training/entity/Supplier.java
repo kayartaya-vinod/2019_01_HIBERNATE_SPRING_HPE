@@ -9,7 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "suppliers")
 public class Supplier {
@@ -33,6 +39,8 @@ public class Supplier {
 	@Column(name = "home_page")
 	private String homePage;
 	
+	@XmlTransient
+	@JsonIgnore
 	// one supplier might have supplied 0 or more products
 	// can be represented using an array, or a List<?> or a Set<?>
 	@OneToMany // by default fetchType is LAZY for collections

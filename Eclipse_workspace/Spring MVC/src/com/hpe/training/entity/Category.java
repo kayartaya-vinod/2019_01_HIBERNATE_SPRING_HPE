@@ -9,9 +9,15 @@ import javax.persistence.Id;
 //import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "categories")
 public class Category {
@@ -23,9 +29,13 @@ public class Category {
 	@Column(name = "category_name")
 	private String categoryName;
 	private String description;
+	
+	@XmlTransient
+	@JsonIgnore
 	private byte[] picture;
 	
-	
+	@XmlTransient
+	@JsonIgnore
 	// assoicated entity
 	// one category has multiple products
 	@OneToMany(mappedBy="category") //

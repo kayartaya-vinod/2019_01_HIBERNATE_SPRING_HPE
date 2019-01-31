@@ -28,7 +28,7 @@ public class ProductController {
 		List<Product> list = dao.getAll();
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/show-products.jsp");
+		mav.setViewName("show-products"); // this is logical view; to be resolved to a physical name by ViewResolver
 		mav.addObject("products", list);
 		
 		return mav;
