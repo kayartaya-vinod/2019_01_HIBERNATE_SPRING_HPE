@@ -83,6 +83,11 @@ The tables and relationships among the same is explained here:
 <a href="https://vinod.co/resources/hibernate-spring-jars.zip">Hibernate and Spring JARs</a> (Download this only if you do not want to use Maven)
 
 
+### Download Apache Tomcat 8.5 from here:
+
+<a href="http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.zip">Apache Tomcat 8.5.37</a>
+
+
 ### Hibernate dependency (Maven)
 
 ```xml
