@@ -10,9 +10,22 @@ From: 25th Jan 2019
 
 To: 31st Jan 2019
 
-<a href="https://www.udemy.com/mongodb-fundamentals/?couponCode=FIRST500" target="_blank">
-<img src="./assets/images/promo-1.png">
-</a>
+
+<table>
+<tr>
+    <td>
+        <a href="http://bit.ly/2D9pxjW" target="_blank">
+        <img src="https://github.com/kayartaya-vinod/2018_11_Unisys_TypeORM/raw/master/angular7.jpeg">
+        </a>
+    </td>
+    <td>
+        <a href="https://www.udemy.com/mongodb-fundamentals/?couponCode=FIRST500" target="_blank">
+        <img src="https://github.com/kayartaya-vinod/2018_11_Unisys_TypeORM/raw/master/mongodb.jpeg">
+        </a>
+    </td>
+</tr>
+</table>
+
 
 
 ### Download h2 database from here:
