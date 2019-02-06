@@ -1,7 +1,5 @@
 # Hibernate with Spring
 
-## Short URL for this page: https://goo.gl/5N9bPV
-
 Client: HPE, Bangalore 
 
 Duration: 5 days
